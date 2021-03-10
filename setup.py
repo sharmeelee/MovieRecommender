@@ -5,5 +5,5 @@ setup(
 	description='A program that recommends movies.', 
 	author=['Priyanka Bijlani', 'Sharmeelee Bijlani', 'Laura Thriftwood', 'Lakshmi Venkatasubramanian'], 
 	packages=['MovieRecommender'], #same as name 
-	install_requires=['torch', 'numpy', 'os', 'sys', 'time', 'pandas', 'zipfile', 'tarfile', 'requests', 'matplotlib.pyplot', 'scipy.sparse', 'implicit', 'pandas.api.types', 'random', 'sklearn', 'math'] #external packages as dependencies 
+	install_requires=['torch', 'numpy', 'os', 'sys', 'time', 'pandas', 'zipfile', 'tarfile', 'requests', 'matplotlib.pyplot', 'scipy.sparse', 'implicit', 'pandas.api.types', 'random', 'sklearn'] #external packages as dependencies 
 )
