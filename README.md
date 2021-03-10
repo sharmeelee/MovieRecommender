@@ -1,3 +1,5 @@
+![alt text](https://travis-ci.org/sharmeelee/MovieRecommender.svg?branch=main)
+
 # Movie Recommender System
 Group: Priyanka Bijlani, Sharmeelee Bijlani, Laura Thriftwood, Lakshmi Venkatasubramanian
 ## Introduction
