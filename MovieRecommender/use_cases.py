@@ -39,7 +39,7 @@ def usecases(predictions,item_vecs,model,movie_list=["Sliding Doors"],user_id=10
         recommendations = pd.DataFrame({'movies': movies_recom, 'rating': ratings_recom})
         return recommendations
     
-    print("movie_list : ",movie_list, "User_id : ", user_id, "similar items : ", n_similar)
+    #print("movie_list : ",movie_list, "User_id : ", user_id, "similar items : ", n_similar - 1)
     predict_ratings = predict_ratings(predictions,item_vecs,user_id)
     movies.name = movies.name.str.strip()
     item_id = movies.item_id.loc[movies.name.isin(movie_list)].iloc[0]
@@ -59,11 +59,11 @@ def main():
     
   if len(sys.argv) >= 2:
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
-    item_vecs,als_model,movie_list=[sys.argv[1]],user=sys.argv[2],item=sys.argv[3],n_similar=20)  
+    item_vecs,als_model,movie_list=[sys.argv[1]],user=sys.argv[2],item=sys.argv[3],n_similar=21)  
   else:
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
     item_vecs,als_model)
-  print(predict_ratings, similar_items,recommendations)
+  print(predict_ratings, (similar_items-1), recommendations)
 
 if __name__ =="__main__":
   train_test_model.main()
@@ -79,19 +79,25 @@ if __name__ =="__main__":
   if len(sys.argv) == 2:
     movie_list=[sys.argv[1]]
     user_id=100
-    n_similar=20
+    n_similar=21
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
-    item_vecs,als_model,movie_list=movie_list,user_id=user_id,n_similar=n_similar)    
+    item_vecs,als_model,movie_list=movie_list,user_id=user_id,n_similar=n_similar)
+  elif len(sys.argv) == 3:
+    movie_list=[sys.argv[1]]
+    user_id=100
+    n_similar=int(sys.argv[2]) + 1
+    predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
+    item_vecs,als_model,movie_list=movie_list,user_id=user_id,n_similar=n_similar)  
   elif len(sys.argv) == 4:
     movie_list=[sys.argv[1]]
     user_id=int(sys.argv[2])
-    n_similar=int(sys.argv[3])
+    n_similar=int(sys.argv[3] + 1)
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
     item_vecs,als_model,movie_list=movie_list,user_id=user_id,n_similar=n_similar)  
   else:
     movie_list=["Sliding Doors"]
     user_id=100
-    n_similar=20
+    n_similar=21
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
     item_vecs,als_model)
   print()
@@ -99,7 +105,7 @@ if __name__ =="__main__":
   print()
   print(predict_ratings)
   print()
-  print("************************** "+str(n_similar) +" MOVIES SIMILAR TO :" +str(movie_list) +"  *****************")
+  print("************************** "+str(n_similar - 1) +" MOVIES SIMILAR TO :" +str(movie_list) +"  *****************")
   print()
   print(similar_items)
   print()
