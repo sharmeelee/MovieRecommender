@@ -20,7 +20,7 @@ install:
 
 # a list of commands to run before the main script
 before_script:
-    - "python setup.py install"
+    - python setup.py install
 
 # the actual commands to run
 script:
