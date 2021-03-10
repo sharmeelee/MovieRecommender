@@ -1,6 +1,3 @@
-$ pip install .
-
-
 from setuptools import setup 
 setup( 
 	name='MovieRecommender', 
