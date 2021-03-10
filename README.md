@@ -20,4 +20,9 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 - User input: movie
 - Outputs: movie(s)
 - ML algorithm: Collaborative filtering 
+## Installation Instructions
+Run the following commands.
+1. git clone https://github.com/sharmeelee/MovieRecommender.git
+2. cd MovieRecommender
+3. python3 setup.py install
 
