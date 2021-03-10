@@ -10,6 +10,7 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 - Over 100k ratings
 - 1700+ movie titles
 - 1000+ users
+### Directory Structure
 ### Use Cases
 1. User will get a movie recommendation from the system based on their previous ratings
 - Training input: users, movies, ratings
