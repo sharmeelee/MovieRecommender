@@ -1,3 +1,4 @@
+# import required packages
 import torch
 import numpy as np
 import os, sys, time 
@@ -5,6 +6,7 @@ import pandas as pd
 import zipfile, tarfile, requests
 import matplotlib.pyplot as plt
 
+# download the data from remote url
 def read_data_ml100k():
     data_url = 'http://files.grouplens.org/datasets/movielens/ml-100k.zip'
     def download_and_extract_data(url):
@@ -43,7 +45,7 @@ def read_data_ml100k():
     return data, movies, num_users, num_items
 
 ################################################################################
-
+# prepare movie rating data for inputing in the sparse matrix
 def get_movies_ratings():
     data, movies, num_users, num_items = read_data_ml100k()
     res=[]
@@ -57,7 +59,7 @@ def get_movies_ratings():
     return data,pd.DataFrame({"item_id":id,"name":res},columns=["item_id","name"]),num_users, num_items
 
 ###########################################################################################   
-    
+ # run the program   
 def main():
   data,movies,num_users, num_items = get_movies_ratings()
   directory = './output'
