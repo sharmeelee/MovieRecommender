@@ -5,6 +5,7 @@ from pandas.api.types import CategoricalDtype
 from scipy.sparse import csr_matrix, save_npz, load_npz
 import os, sys, time 
 import csv
+import matplotlib.pyplot as plt
 
 ##########################################################################################   
     
@@ -12,7 +13,6 @@ def process_data(data):
     def data_visual():
         #Seeing the distribution of ratings given by the users
         print("See Overview of the Data")
-        #data = './data'
         p = data.groupby('rating')['rating'].agg(['count'])
         # get movie count
         movie_count = data['item_id'].nunique()
@@ -25,9 +25,13 @@ def process_data(data):
         plt.axis('off')
         for i in range(1,6):
             ax.text(p.iloc[i-1][0]/4, i-1, 'Rated {}: {:.0f}%'.format(i, p.iloc[i-1][0]*100 / p.sum()[0]), color = 'white', weight = 'bold',fontsize=15)
-            
+    
     data.drop('timestamp',inplace=True,axis=1,errors='ignore')
-    #data_visual()
+    data_visual()
+    directory = 'images'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    plt.savefig('images/DistributionOfRatings.jpg')
     return data
 
 ########################################################################################### 
