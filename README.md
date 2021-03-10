@@ -22,10 +22,22 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 - User input: movie
 - Outputs: movie(s)
 - ML algorithm: Collaborative filtering 
-## Installation Instructions
+
+3. User will be able to predict the rating of a given movie based on past ratings by the same user
+- Training input: users, movies, ratings
+- User input: User, movie
+- Outputs: rating
+- ML algorithm: Collaborative filtering 
+## Running the Program
+### Installation Instructions
 Run the following commands.
 Note: Python 3.8 required.
-1. git clone https://github.com/sharmeelee/MovieRecommender.git
-2. cd MovieRecommender
-3. python3 setup.py install
-
+```
+git clone https://github.com/sharmeelee/MovieRecommender.git
+```
+```
+cd MovieRecommender
+```
+```
+python3 setup.py install
+```
