@@ -8,6 +8,7 @@ import zipfile, tarfile, requests
 # download the data from remote url
 def read_data_ml100k():
     data_url = 'http://files.grouplens.org/datasets/movielens/ml-100k.zip'
+    
     def download_and_extract_data(url):
         """Download and extract a zip/tar file."""
         directory = './data'
@@ -45,8 +46,8 @@ def read_data_ml100k():
 
 ################################################################################
 # prepare movie rating data for inputing in the sparse matrix
-def get_movies_ratings():
-    data, movies, num_users, num_items = read_data_ml100k()
+def get_movies_ratings(movies):
+    #data, movies, num_users, num_items = read_data_ml100k()
     res=[]
     id=[]
     for row in movies['movies']:
@@ -55,24 +56,28 @@ def get_movies_ratings():
         movie = row.split('|')[1]
         movie = movie.split('(')[0]
         res.append(movie)
-    return data,pd.DataFrame({"item_id":id,"name":res},columns=["item_id","name"]),num_users, num_items
+    return pd.DataFrame({"item_id":id,"name":res},columns=["item_id","name"])
 
 ###########################################################################################   
  # run the program   
 def main():
-  data,movies,num_users, num_items = get_movies_ratings()
-  directory = './output'
-  if not os.path.exists(directory):
-    os.makedirs(directory)
-  data.to_pickle("./output/ratings.pkl")
-  movies.to_pickle("./output/movies.pkl")
+    data, movies, num_users, num_items = read_data_ml100k()
+    movies = get_movies_ratings(movies)
+    directory = './output'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    data.to_pickle("./output/ratings.pkl")
+    movies.to_pickle("./output/movies.pkl")
 
 if __name__ =="__main__":
+    main()
+    '''
   data,movies,num_users, num_items = get_movies_ratings()
   directory = './output'
   if not os.path.exists(directory):
     os.makedirs(directory)
   data.to_pickle("./output/ratings.pkl")
   movies.to_pickle("./output/movies.pkl")
+  '''
   
 
