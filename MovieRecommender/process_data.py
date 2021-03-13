@@ -1,4 +1,4 @@
-import extract_data
+from MovieRecommender.extract_data import *
 import pandas as pd
 import numpy as np
 from pandas.api.types import CategoricalDtype
