@@ -1,4 +1,5 @@
 ![alt text](https://travis-ci.org/sharmeelee/MovieRecommender.svg?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/sharmeelee/MovieRecommender/badge.svg)](https://coveralls.io/github/sharmeelee/MovieRecommender)
 
 # IMDB Movie Recommender System
 Group: Priyanka Bijlani, Sharmeelee Bijlani, Laura Thriftwood, Lakshmi Venkatasubramanian
