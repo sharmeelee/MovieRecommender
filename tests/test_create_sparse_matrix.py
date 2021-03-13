@@ -2,7 +2,7 @@ import unittest
 import os
 import pickle
 import pandas as pd
-from process_data import *
+import process_data
 
 testdata = {'user_id':[1, 2, 5, 5, 5], 'item_id':[4, 5, 6, 7, 7], 'rating':[7, 1, 3, 4, 5]}
 testdf = pd.DataFrame(testdata)
