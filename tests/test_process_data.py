@@ -2,7 +2,7 @@ import unittest
 import os
 import pickle
 import pandas as pd
-from process_data import process_data
+from MovieRecommender.process_data import process_data
 
 #create a dataframe with the four columns and send it
 testdata = {'user_id':[1, 2, 3, 5, 5], 'item_id':[4, 5, 6, 7, 7], 'rating':[1, 2, 3, 4, 5], 'timestamp':[10, 11, 12, 12, 12]}
