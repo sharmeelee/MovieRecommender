@@ -2,7 +2,7 @@ import unittest
 import os
 import pickle
 import pandas as pd
-from extract_data import read_data_ml100k, get_movies_ratings
+from MovieRecommender.extract_data import read_data_ml100k, get_movies_ratings
 
 testdata, testmovies, testnum_users, testnum_items = read_data_ml100k()
 return_movies = get_movies_ratings(testmovies)
