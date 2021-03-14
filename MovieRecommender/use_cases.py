@@ -91,7 +91,7 @@ if __name__ =="__main__":
   elif len(sys.argv) == 4:
     movie_list=[sys.argv[1]]
     user_id=int(sys.argv[2])
-    n_similar=int(sys.argv[3] + 1)
+    n_similar=int(sys.argv[3]) + 1
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
     item_vecs,als_model,movie_list=movie_list,user_id=user_id,n_similar=n_similar)  
   else:
