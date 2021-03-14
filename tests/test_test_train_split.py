@@ -2,8 +2,8 @@ import unittest
 import os
 import pickle
 import pandas as pd
-from train_test_model import test_train_split
-from process_data import create_sparse_matrix
+from MovieRecommender.train_test_model import test_train_split
+from MovieRecommender.process_data import create_sparse_matrix
 
 testdf = pd.DataFrame({'user_id':[1, 2, 5, 5, 5, 6, 5], 'item_id':[2, 4, 6, 8, 62, 62, 100], 'rating':[1, 0, 3, 4, 5, 2, 1]})
 test_sparse_item_user, test_sparse_user_item = create_sparse_matrix(testdf)
@@ -12,7 +12,7 @@ test_train_data, test_test_data, test_users_altered = test_train_split(test_spar
 # Define a class in which the tests will run
 class TestTrainSplit(unittest.TestCase):
     
-    #test that zero ratings are dropped
+    #test to make sure drops zero ratings
     def test_dim_drop_zeros(self):
         #should return a csr matrix with dimensions (number of unique users, number of unique items) 
         #after dropping the user/item with a zero rating
