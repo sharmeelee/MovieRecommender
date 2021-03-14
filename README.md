@@ -60,7 +60,8 @@ Running the use_cases.py file with one argument of a movie name returns movie ra
 ```
 python3 use_cases.py "Toy Story"
 ```
-Expected Output:
+Expected Output: 
+![alt text](images/use_case2.png)
 #### Use Case #3: Input Movie Name and Number of Similar Items
 Running the use_cases.py file with two arguments outputs predicted movie ratings by the default user, a number (set by user input) of similar movie titles to the given movie name, and top 10 movie recommendations for the default user. 
 ```
