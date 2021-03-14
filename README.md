@@ -43,3 +43,13 @@ cd MovieRecommender
 ```
 python3 setup.py install
 ```
+### Running the Use Cases
+#### Use Case #1: No inputs
+See the ratings for default movie by default user and top 20 movie recommendataions. 
+```
+cd MovieRecommender
+python3 use_cases.py
+```
+Expected Output:
+
+
