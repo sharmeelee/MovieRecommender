@@ -74,7 +74,7 @@ if __name__ =="__main__":
   with open('./output/als_model', 'rb') as file:  
     als_model = pickle.load(file)
   
-  print('Number of arguments:', len(sys.argv), 'arguments.')
+  print('Number of arguments:', len(sys.argv) - 1, 'arguments.')
   print('Argument List:', str(sys.argv))
   if len(sys.argv) == 2:
     movie_list=[sys.argv[1]]
@@ -91,7 +91,7 @@ if __name__ =="__main__":
   elif len(sys.argv) == 4:
     movie_list=[sys.argv[1]]
     user_id=int(sys.argv[2])
-    n_similar=int(sys.argv[3] + 1)
+    n_similar=int(sys.argv[3]) + 1
     predict_ratings, similar_items,recommendations = usecases([csr_matrix(user_vecs), csr_matrix(item_vecs.T)],\
     item_vecs,als_model,movie_list=movie_list,user_id=user_id,n_similar=n_similar)  
   else:
@@ -107,7 +107,7 @@ if __name__ =="__main__":
   print()
   print("************************** "+str(n_similar - 1) +" MOVIES SIMILAR TO :" +str(movie_list) +"  *****************")
   print()
-  print(similar_items)
+  print(similar_items[1:])
   print()
   print("************************** RECOMMEDATIONS FOR USER :" +str(user_id) +" ******************")
   print()

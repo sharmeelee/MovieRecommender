@@ -12,24 +12,24 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 - 1700+ movie titles
 - 1000+ users
 ### Directory Structure
-### Use Cases
-1. User will get a movie recommendation from the system based on their previous ratings
-- Training input: users, movies, ratings
-- User input: user name/id
-- Outputs: movie(s)
-- ML algorithm: Collaborative filtering (analyzes historical data)
+### Program Functionality
+1. User will get a movie recommendation from the system based on their movie watch and rating history.
+  - Training input: users, movies, ratings
+  - User input: user name/id
+  - Outputs: movie(s)
+  - ML algorithm: Collaborative filtering (analyzes historical data)
 
-2. User will be able to provide a movie name and get similar movies
-- Training input: users, movies, ratings
-- User input: movie
-- Outputs: movie(s)
-- ML algorithm: Collaborative filtering 
+2. User will be able to provide a movie name and get similar movies.
+  - Training input: users, movies, ratings
+  - User input: movie
+  - Outputs: movie(s)
+  - ML algorithm: Collaborative filtering 
 
-3. User will be able to predict the rating of a given movie based on past ratings by the same user
-- Training input: users, movies, ratings
-- User input: User, movie
-- Outputs: rating
-- ML algorithm: Collaborative filtering 
+3. User will be able to predict the rating of a given movie based on their rating history.
+  - Training input: users, movies, ratings
+  - User input: User, movie
+  - Outputs: rating
+  - ML algorithm: Collaborative filtering 
 ## Running the Program
 ### Installation Instructions
 Run the following commands.
@@ -43,3 +43,40 @@ cd MovieRecommender
 ```
 python3 setup.py install
 ```
+### Running the Use Cases
+To run the program, you need to navigate within the directory to the MovieRecommender sub-folder where the use_cases.py file lives.
+```
+cd MovieRecommender
+```
+#### Use Case #1: No inputs
+Running the use_cases.py file without any arguments is an example usage of the full functionality of the program. It outputs movie rating for the default user (user 100) along with 20 similar movie titles to the default movie (Sliding Doors) and top 10 movie recommendations for the default user. 
+```
+python3 use_cases.py
+```
+Expected Output:
+
+![alt text](images/use_case1.png)
+#### Use Case #2: Input Movie Name
+Running the use_cases.py file with one argument of a movie name returns movie ratings for the default user, 20 similar titles to the given movie name, and top 10 movie recommendataions for the default user. 
+```
+python3 use_cases.py "Toy Story"
+```
+Expected Output: 
+
+![alt text](images/use_case2.png)
+#### Use Case #3: Input Movie Name and Number of Similar Items
+Running the use_cases.py file with two arguments outputs predicted movie ratings by the default user, a number (set by user input) of similar movie titles to the given movie name, and top 10 movie recommendations for the default user. 
+```
+python3 use_cases.py "Toy Story" 10
+```
+Expected Output:
+
+![alt text](images/use_case3.png)
+#### Use Case #4: Input Movie Name, UserID, and Number of Similar Items,
+Running the use_cases.py file with all three arguments outputs predicted movie ratings for the given user, a number (set by user input) of similar movie titles to the given movie name, and top 10 movie recommendataion for the given user ID.
+```
+python3 use_cases.py "Toy Story" 500 10
+```
+Expected Output:
+
+![alt text](images/use_case4.png)

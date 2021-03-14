@@ -24,13 +24,11 @@ class TestSparseMatrix(unittest.TestCase):
 
     #check to ensure returns csr matrix format
     def test_return_format1(self):
-        returnformat = testsparse_item_user.getformat()
-        self.assertEqual(returnformat, "csr")
+        self.assertEqual(testsparse_item_user.getformat(), "csr")
         
     #check to ensure returns csr matrix format
     def test_return_format2(self):
-        returnformat = testsparse_user_item.getformat()
-        self.assertEqual(returnformat, "csr")
+        self.assertEqual(testsparse_user_item.getformat(), "csr")
 
 if __name__ == '__main__':
     unittest.main()

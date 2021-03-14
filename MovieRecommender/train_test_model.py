@@ -1,4 +1,4 @@
-import process_data
+from MovieRecommender import process_data
 import pandas as pd
 import numpy as np
 from scipy.sparse import csr_matrix, save_npz, load_npz
@@ -12,7 +12,8 @@ import pickle
 ##########################################################################################   
       
 def test_train_split(sparse_user_item):
-  def make_train(ratings, pct_test = 0.2):
+    ratings = sparse_user_item
+    pct_test = 0.2
     test_set = ratings.copy() # Make a copy of the original set to be the test set. 
     test_set[test_set != 0] = 1 # Store the test set as a binary preference matrix
     training_set = ratings.copy() # Make a copy of the original data we can alter as our training set. 
@@ -25,10 +26,9 @@ def test_train_split(sparse_user_item):
     item_inds = [index[1] for index in samples] # Get the item column indices
     training_set[user_inds, item_inds] = 0 # Assign all of the randomly chosen user-item pairs to zero
     training_set.eliminate_zeros() # Get rid of zeros in sparse array storage after update to save space
-    return training_set, test_set, list(set(user_inds)) # Output the unique list of user rows that were altered
-  train_data, test_data, users_altered = make_train(sparse_user_item, pct_test = 0.2)
-  print("Train test split done! ",train_data.shape, test_data.shape)
-  return train_data, test_data, users_altered  
+    train_data, test_data, users_altered = training_set, test_set, list(set(user_inds)) # Output the unique list of user rows that were altered
+    print("Train test split done! ",train_data.shape, test_data.shape)
+    return train_data, test_data, users_altered 
   
 ########################################################################################### 
 
@@ -77,35 +77,22 @@ def evaluate_model(training_set, altered_users, predictions, test_set):
     # Return the mean AUC rounded to three decimal places for both test and popularity benchmarkm  
 
 ########################################################################################### 
+
 def main():
-  process_data.main()
-  sparse_user_item = load_npz("./output/sparse_user_item.npz")
-  train_data, test_data, users_altered = test_train_split(sparse_user_item)
-  als_model,user_vecs,item_vecs = train_model(train_data.T) # the parameter to trail_model should be item - user matrix
-  print("implicit_recomm_auc,popularity_auc",evaluate_model(train_data, users_altered,[csr_matrix(user_vecs), csr_matrix(item_vecs.T)], test_data))
+   process_data.main()
+   sparse_user_item = load_npz("./output/sparse_user_item.npz")
+   train_data, test_data, users_altered = test_train_split(sparse_user_item)
+   als_model,user_vecs,item_vecs = train_model(train_data.T) # the parameter to trail_model should be item - user matrix
+   print("implicit_recomm_auc,popularity_auc",evaluate_model(train_data, users_altered,[csr_matrix(user_vecs), csr_matrix(item_vecs.T)], test_data))
   
-  directory = './output'
-  if not os.path.exists(directory):
-    os.makedirs(directory)
-  np.save('./output/item_vecs', item_vecs)
-  np.save('./output/user_vecs', user_vecs)
+   directory = './output'
+   if not os.path.exists(directory):
+      os.makedirs(directory)
+   np.save('./output/item_vecs', item_vecs)
+   np.save('./output/user_vecs', user_vecs)
   
-  with open('./output/als_model', 'wb') as file:  
-    pickle.dump(als_model, file)
+   with open('./output/als_model', 'wb') as file:  
+     pickle.dump(als_model, file)
 
 if __name__ =="__main__":
-  process_data.main()
-  sparse_user_item = load_npz("./output/sparse_user_item.npz")
-  train_data, test_data, users_altered = test_train_split(sparse_user_item)
-  als_model,user_vecs,item_vecs = train_model(train_data.T) # the parameter to trail_model should be item - user matrix
-  print("implicit_recomm_auc,popularity_auc",evaluate_model(train_data, users_altered,[csr_matrix(user_vecs), csr_matrix(item_vecs.T)], test_data))
-  
-  directory = './output'
-  if not os.path.exists(directory):
-    os.makedirs(directory)
-  np.save('./output/item_vecs', item_vecs)
-  np.save('./output/user_vecs', user_vecs)
-  
-  with open('./output/als_model', 'wb') as file:  
-    pickle.dump(als_model, file)
-
+   main()
