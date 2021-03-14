@@ -12,23 +12,23 @@ import pickle
 ##########################################################################################   
       
 def test_train_split(sparse_user_item):
-  ratings = sparse_user_item
-  pct_test = 0.2
-  test_set = ratings.copy() # Make a copy of the original set to be the test set. 
-  test_set[test_set != 0] = 1 # Store the test set as a binary preference matrix
-  training_set = ratings.copy() # Make a copy of the original data we can alter as our training set. 
-  nonzero_inds = training_set.nonzero() # Find the indices in the ratings data where an interaction exists
-  nonzero_pairs = list(zip(nonzero_inds[0], nonzero_inds[1])) # Zip these pairs together of user,item index into list
-  random.seed(0) # Set the random seed to zero for reproducibility
-  num_samples = int(np.ceil(pct_test*len(nonzero_pairs))) # Round the number of samples needed to the nearest integer
-  samples = random.sample(nonzero_pairs, num_samples) # Sample a random number of user-item pairs without replacement
-  user_inds = [index[0] for index in samples] # Get the user row indices
-  item_inds = [index[1] for index in samples] # Get the item column indices
-  training_set[user_inds, item_inds] = 0 # Assign all of the randomly chosen user-item pairs to zero
-  training_set.eliminate_zeros() # Get rid of zeros in sparse array storage after update to save space
-  train_data, test_data, users_altered = training_set, test_set, list(set(user_inds)) # Output the unique list of user rows that were altered
-  print("Train test split done! ",train_data.shape, test_data.shape)
-  return train_data, test_data, users_altered 
+    ratings = sparse_user_item
+    pct_test = 0.2
+    test_set = ratings.copy() # Make a copy of the original set to be the test set. 
+    test_set[test_set != 0] = 1 # Store the test set as a binary preference matrix
+    training_set = ratings.copy() # Make a copy of the original data we can alter as our training set. 
+    nonzero_inds = training_set.nonzero() # Find the indices in the ratings data where an interaction exists
+    nonzero_pairs = list(zip(nonzero_inds[0], nonzero_inds[1])) # Zip these pairs together of user,item index into list
+    random.seed(0) # Set the random seed to zero for reproducibility
+    num_samples = int(np.ceil(pct_test*len(nonzero_pairs))) # Round the number of samples needed to the nearest integer
+    samples = random.sample(nonzero_pairs, num_samples) # Sample a random number of user-item pairs without replacement
+    user_inds = [index[0] for index in samples] # Get the user row indices
+    item_inds = [index[1] for index in samples] # Get the item column indices
+    training_set[user_inds, item_inds] = 0 # Assign all of the randomly chosen user-item pairs to zero
+    training_set.eliminate_zeros() # Get rid of zeros in sparse array storage after update to save space
+    train_data, test_data, users_altered = training_set, test_set, list(set(user_inds)) # Output the unique list of user rows that were altered
+    print("Train test split done! ",train_data.shape, test_data.shape)
+    return train_data, test_data, users_altered 
   
 ########################################################################################### 
 
