@@ -54,6 +54,7 @@ Running the use_cases.py file without any arguments is an example usage of the f
 python3 use_cases.py
 ```
 Expected Output:
+![alt text](images/use_case1.png)
 #### Use Case #2: Input Movie Name
 Running the use_cases.py file with one argument of a movie name returns movie ratings for the default user, 20 similar titles to the given movie name, and top 10 movie recommendataions for the default user. 
 ```
