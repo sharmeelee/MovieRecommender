@@ -12,20 +12,20 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 - 1700+ movie titles
 - 1000+ users
 ### Directory Structure
-### Use Cases
-1. User will get a movie recommendation from the system based on their previous ratings
+### Program Functionality
+1. User will get a movie recommendation from the system based on their movie watch and rating history.
 - Training input: users, movies, ratings
 - User input: user name/id
 - Outputs: movie(s)
 - ML algorithm: Collaborative filtering (analyzes historical data)
 
-2. User will be able to provide a movie name and get similar movies
+2. User will be able to provide a movie name and get similar movies.
 - Training input: users, movies, ratings
 - User input: movie
 - Outputs: movie(s)
 - ML algorithm: Collaborative filtering 
 
-3. User will be able to predict the rating of a given movie based on past ratings by the same user
+3. User will be able to predict the rating of a given movie based on their rating history.
 - Training input: users, movies, ratings
 - User input: User, movie
 - Outputs: rating
