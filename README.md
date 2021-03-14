@@ -57,9 +57,18 @@ Expected Output:
 #### Use Case #2: Input Movie Name
 Running the use_cases.py file with one argument of a movie name returns movie ratings for the default user, 20 similar titles to the given movie name, and top 10 movie recommendataions for the default user. 
 ```
-python use_cases.py "Toy Story"
+python3 use_cases.py "Toy Story"
 ```
 Expected Output:
-### Use Case #3: Input Movie Name and UserID
-
+#### Use Case #3: Input Movie Name and Number of Similar Items
+Running the use_cases.py file with two arguments outputs predicted movie ratings by the default user, a number (set by user input) of similar movie titles to the given movie name, and top 10 movie recommendations for the default user. 
+```
+python3 use_cases.py "Toy Story" 10
+```
+#### Use Case #4: Input Movie Name, UserID, and Number of Similar Items,
+Running the use_cases.py file with all three arguments outputs predicted movie ratings for the given user, a number (set by user input) of similar movie titles to the given movie name, and top 10 movie recommendataion for the given user ID.
+```
+python3 use_cases.py "Toy Story" 500 10
+```
+Expected Output:
 
