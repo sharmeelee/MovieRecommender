@@ -14,22 +14,22 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 ### Directory Structure
 ### Program Functionality
 1. User will get a movie recommendation from the system based on their movie watch and rating history.
-- Training input: users, movies, ratings
-- User input: user name/id
-- Outputs: movie(s)
-- ML algorithm: Collaborative filtering (analyzes historical data)
+  - Training input: users, movies, ratings
+  - User input: user name/id
+  - Outputs: movie(s)
+  - ML algorithm: Collaborative filtering (analyzes historical data)
 
 2. User will be able to provide a movie name and get similar movies.
-- Training input: users, movies, ratings
-- User input: movie
-- Outputs: movie(s)
-- ML algorithm: Collaborative filtering 
+  - Training input: users, movies, ratings
+  - User input: movie
+  - Outputs: movie(s)
+  - ML algorithm: Collaborative filtering 
 
 3. User will be able to predict the rating of a given movie based on their rating history.
-- Training input: users, movies, ratings
-- User input: User, movie
-- Outputs: rating
-- ML algorithm: Collaborative filtering 
+  - Training input: users, movies, ratings
+  - User input: User, movie
+  - Outputs: rating
+  - ML algorithm: Collaborative filtering 
 ## Running the Program
 ### Installation Instructions
 Run the following commands.
