@@ -51,7 +51,7 @@ def process_data(data):
 ########################################################################################### 
 
 def create_sparse_matrix(data):
-    data_matrix = data.loc[data.rating != 0]
+    data_matrix = data.copy()
 
     users = list(np.sort(data_matrix.user_id.unique())) # Get our unique users
     items = list(np.sort(data_matrix.item_id.unique())) # Get our unique movies 
