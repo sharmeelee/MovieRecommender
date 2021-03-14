@@ -74,7 +74,7 @@ if __name__ =="__main__":
   with open('./output/als_model', 'rb') as file:  
     als_model = pickle.load(file)
   
-  print('Number of arguments:', len(sys.argv), 'arguments.')
+  print('Number of arguments:', len(sys.argv) - 1, 'arguments.')
   print('Argument List:', str(sys.argv))
   if len(sys.argv) == 2:
     movie_list=[sys.argv[1]]
@@ -107,7 +107,7 @@ if __name__ =="__main__":
   print()
   print("************************** "+str(n_similar - 1) +" MOVIES SIMILAR TO :" +str(movie_list) +"  *****************")
   print()
-  print(similar_items)
+  print(similar_items[1:])
   print()
   print("************************** RECOMMEDATIONS FOR USER :" +str(user_id) +" ******************")
   print()
