@@ -4,7 +4,7 @@ import pickle
 import pandas as pd
 from scipy.sparse import csr_matrix
 import implicit
-from train_test_model import train_model
+from MovieRecommender.train_test_model import train_model
 
 testdf = pd.DataFrame({'user_id':[1, 2, 5, 7, 9, 12, 45], 'item_id':[2, 4, 6, 8, 62, 92, 100], 'rating':[1, 5, 0, 4, 5, 2, 1]})
 testsparse = csr_matrix(testdf)
