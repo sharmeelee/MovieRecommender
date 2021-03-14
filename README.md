@@ -44,12 +44,22 @@ cd MovieRecommender
 python3 setup.py install
 ```
 ### Running the Use Cases
-#### Use Case #1: No inputs
-See the ratings for default movie by default user and top 20 movie recommendataions. 
+To run the program, you need to navigate within the directory to the MovieRecommender sub-folder where the use_cases.py file lives.
 ```
 cd MovieRecommender
+```
+#### Use Case #1: No inputs
+Running the use_cases.py file without any arguments is an example usage of the full functionality of the program. It outputs movie rating for the default user (user 100) along with 20 similar movie titles to the default movie (Sliding Doors) and top 10 movie recommendations for the default user. 
+```
 python3 use_cases.py
 ```
 Expected Output:
+#### Use Case #2: Input Movie Name
+Running the use_cases.py file with one argument of a movie name returns movie ratings for the default user, 20 similar titles to the given movie name, and top 10 movie recommendataions for the default user. 
+```
+python use_cases.py "Toy Story"
+```
+Expected Output:
+### Use Case #3: Input Movie Name and UserID
 
 
