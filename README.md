@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/sharmeelee/MovieRecommender/badge.svg?branch=main)](https://coveralls.io/github/sharmeelee/MovieRecommender?branch=main)
 
 # IMDB Movie Recommender System
-Group: Priyanka Bijlani, Sharmeelee Bijlani, Laura Thriftwood, Lakshmi Venkatasubramanian
+Authors: Priyanka Bijlani, Sharmeelee Bijlani, Laura Thriftwood, Lakshmi Venkatasubramanian
 ## Introduction
 When considering which movie to watch, users have access to an overwhelming number of options. Users want custom recommendations to ensure optimal use of their time watching content. Business models benefit from strong recommender systems by increasing user engagement and addiction to streaming platforms. 
 With this project, we can create our own movie recommendation system that takes user input of one movie and utilizes a rich dataset of movie titles, ratings and user information to output a recommended movie. 
