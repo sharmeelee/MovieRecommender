@@ -25,8 +25,8 @@ class TestReadData(unittest.TestCase):
         self.assertEqual(len(return_movies.columns), 2)
     
     def test_main(self):
-        result = os.system("python3 extract_data.py")
-        self.assertTrue(type(result) is int)
+        main()
+        self.assertTrue(os.path.exists('./output'))
 
 if __name__ == '__main__':
     unittest.main()
