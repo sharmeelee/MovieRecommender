@@ -2,7 +2,7 @@ import unittest
 import os
 import pickle
 import pandas as pd
-from MovieRecommender.process_data import process_data
+from MovieRecommender.process_data import process_data, main
 
 #create a dataframe with the four columns and send it
 testdata = {'user_id':[1, 2, 3, 5, 5], 'item_id':[4, 5, 6, 7, 7], 'rating':[1, 2, 3, 4, 5], 'timestamp':[10, 11, 12, 12, 12]}
@@ -21,6 +21,10 @@ class TestProcessData(unittest.TestCase):
 
     def test_item_counts(self):
         self.assertEqual(test_item_count, testdfreturn['item_id'].nunique())
+        
+    def test_main(self):
+        main()
+        self.assertTrue(os.path.exists('./output'))
 
 
 if __name__ == '__main__':
