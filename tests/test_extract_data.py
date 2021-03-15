@@ -2,7 +2,7 @@ import unittest
 import os
 import pickle
 import pandas as pd
-from MovieRecommender.extract_data import read_data_ml100k, get_movies_ratings
+from MovieRecommender.extract_data import read_data_ml100k, get_movies_ratings, main
 
 testdata, testmovies, testnum_users, testnum_items = read_data_ml100k()
 return_movies = get_movies_ratings(testmovies)
@@ -23,6 +23,10 @@ class TestReadData(unittest.TestCase):
 
     def test_df_ratings(self):
         self.assertEqual(len(return_movies.columns), 2)
+    
+    def test_main(self):
+        result = os.system("python3 extract_data.py")
+        self.assertTrue(type(result) is int)
 
 if __name__ == '__main__':
     unittest.main()
