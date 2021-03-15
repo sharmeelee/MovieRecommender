@@ -1,5 +1,5 @@
 ![alt text](https://travis-ci.org/sharmeelee/MovieRecommender.svg?branch=main)
-[![Coverage Status](https://coveralls.io/repos/github/sharmeelee/MovieRecommender/badge.svg?branch=main)](https://coveralls.io/github/sharmeelee/MovieRecommender?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/sharmeelee/MovieRecommender/badge.svg?branch=main&service=github)](https://coveralls.io/github/sharmeelee/MovieRecommender?branch=main&service=github)
 
 # IMDB Movie Recommender System
 Authors: Priyanka Bijlani, Sharmeelee Bijlani, Laura Thriftwood, Lakshmi Venkatasubramanian
