@@ -26,12 +26,15 @@ def read_data_ml100k():
 
         base_dir = os.path.dirname(fname)
         data_dir, ext = os.path.splitext(fname)
+        '''
         if ext == '.zip':
             fp = zipfile.ZipFile(fname, 'r')
         elif ext in ('.tar', '.gz'):
             fp = tarfile.open(fname, 'r')
         else:
             assert False, 'Only zip/tar files can be extracted.'
+        '''
+        fp = zipfile.ZipFile(fname, 'r')
         fp.extractall(base_dir)
         print('Done!')
         return data_dir
