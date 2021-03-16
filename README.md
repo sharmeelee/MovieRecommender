@@ -73,7 +73,7 @@ python3 use_cases.py "Toy Story" 10
 Expected Output:
 
 ![alt text](images/use_cases3.png)
-#### Use Case #4: Input Movie Name, UserID, and Number of Similar Items,
+#### Use Case #4: Input Movie Name, UserID, and Number of Similar Items
 Running the use_cases.py file with all three arguments outputs predicted movie ratings for the given user, a number (set by user input) of similar movie titles to the given movie name, and top 10 movie recommendataion for the given user ID.
 ```
 python3 use_cases.py "Toy Story" 500 10
