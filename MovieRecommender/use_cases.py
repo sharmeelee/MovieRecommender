@@ -29,13 +29,13 @@ def predict_ratings(predictions,item_vecs,user_id):
 def similar_items(movies,model,movie_list,n_similar=20):
     # Use implicit to get similar items.
     movies.name = movies.name.str.strip()
-    item_id = movies.item_id.loc[movies.name.isin(movie_list)].iloc[0]
+    item_id = movies.item_id.loc[movies.name.str.lower().isin([s.lower() for s in movie_list])].iloc[0]
     movie_names = []
     similar = model.similar_items(item_id, n_similar)
     # Print the names of similar movies
     for item in similar:
         idx, rating = item
-        movie_names.append(movies.name.loc[movies.item_id == idx].iloc[0])
+        movie_names.append(movies.name.loc[movies.item_id == idx+1].iloc[0])
     similar = pd.DataFrame({"Similar Movies":movie_names[1:]})
     return similar
             
@@ -47,7 +47,7 @@ def recommendations(data,train_data,movies,model,sparse_user_item,user_id):
     # Get movie names from ids
     for item in recommended:
         idx, rating = item
-        movies_recom.append((movies.name.loc[movies.item_id == idx].iloc[0]))
+        movies_recom.append((movies.name.loc[movies.item_id == idx+1].iloc[0]))
         #ratings_recom.append(rating)
     # Create a dataframe of movie names and scores
     #recommendations = pd.DataFrame({'Movies': movies_recom, 'Rating': ratings_recom})
