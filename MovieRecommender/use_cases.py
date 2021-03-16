@@ -1,4 +1,4 @@
-import train_test_model
+from MovieRecommender import train_test_model
 import pandas as pd
 import numpy as np
 #import math

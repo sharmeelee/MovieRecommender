@@ -1,4 +1,4 @@
-import process_data
+from MovieRecommender import process_data
 import pandas as pd
 import numpy as np
 from scipy.sparse import csr_matrix, save_npz, load_npz
