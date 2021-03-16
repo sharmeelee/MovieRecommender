@@ -25,6 +25,9 @@ class TestProcessData(unittest.TestCase):
     def test_main(self):
         main()
         self.assertTrue(os.path.exists('./output'))
+        
+    def test_images(self):
+        self.assertTrue(os.path.exists('./images'))
 
 
 if __name__ == '__main__':
