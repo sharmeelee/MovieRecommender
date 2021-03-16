@@ -28,7 +28,7 @@ def process_data(data):
     directory = 'images'
     if not os.path.exists(directory):
         os.makedirs(directory)
-    plt.savefig('images/DistributionOfRatings.jpg')
+    plt.savefig('images/DistributionOfRatings.png')
     return data, cust_count, movie_count
 
 ########################################################################################### 
