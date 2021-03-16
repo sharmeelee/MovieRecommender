@@ -55,8 +55,8 @@ python3 use_cases.py
 ```
 Expected Output:
 
-![alt text](images/use_case1-1.png)
-![alt text](images/use_case1-2.png)
+![alt text](images/use_cases1-1.png)
+![alt text](images/use_cases1-2.png)
 #### Use Case #2: Input Movie Name
 Running the use_cases.py file with one argument of a movie name returns movie ratings for the default user, 20 similar titles to the given movie name, and top 10 movie recommendataions for the default user. 
 ```
