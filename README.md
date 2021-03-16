@@ -80,4 +80,5 @@ python3 use_cases.py "Toy Story" 500 10
 ```
 Expected Output:
 
-![alt text](images/use_case4.png)
+![alt text](images/use_case4-1.png)
+![alt text](images/use_case4-2.png)
