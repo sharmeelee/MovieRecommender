@@ -32,7 +32,7 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
   - ML algorithm: Collaborative filtering 
 ## Running the Program
 ### Installation Instructions
-Run the following commands.
+Run the following commands in a linux terminal. /n
 Note: Python 3.8 required.
 ```
 git clone https://github.com/sharmeelee/MovieRecommender.git
