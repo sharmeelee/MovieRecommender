@@ -12,6 +12,7 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 - 1700+ movie titles
 - 1000+ users
 ### Directory Structure
+![alt text](images/directory_tree.png)
 ### Program Functionality
 1. User will get a movie recommendation from the system based on their movie watch and rating history.
   - Training input: users, movies, ratings
