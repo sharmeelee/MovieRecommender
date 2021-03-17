@@ -2,12 +2,9 @@ from MovieRecommender import extract_data
 import pandas as pd
 import numpy as np
 from pandas.api.types import CategoricalDtype
-from scipy.sparse import csr_matrix, save_npz, load_npz
-import os, sys, time 
-import csv
+from scipy.sparse import csr_matrix, save_npz
+import os
 import matplotlib.pyplot as plt
-
-##########################################################################################   
     
 def process_data(data):
     data.drop('timestamp',inplace=True,axis=1,errors='ignore')
@@ -31,7 +28,6 @@ def process_data(data):
     plt.savefig('images/DistributionOfRatings.png')
     return data, cust_count, movie_count
 
-########################################################################################### 
 
 def create_sparse_matrix(data):
     data_matrix = data.loc[data.rating != 0]
@@ -51,7 +47,6 @@ def create_sparse_matrix(data):
     print("Sparse matrices created : sparse_item_user ", sparse_item_user.shape, "sparse_user_item" ,sparse_user_item.shape)
     return sparse_item_user,sparse_user_item
 
-########################################################################################### 
 
 def main():
   extract_data.main()
