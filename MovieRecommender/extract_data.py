@@ -1,21 +1,21 @@
 # import required packages
-import torch
-import numpy as np
-import os, sys, time 
+import os
 import pandas as pd
-import zipfile, tarfile, requests
+import zipfile
+import requests
+
 
 # download the data from remote url
 def read_data_ml100k():
     data_url = 'http://files.grouplens.org/datasets/movielens/ml-100k.zip'
-    
+
     def download_and_extract_data(url):
         """Download and extract a zip/tar file."""
         directory = './data'
         if not os.path.exists(directory):
             os.makedirs(directory)
         fname = os.path.join('./data', url.split('/')[-1])
-        
+
         if os.path.exists(fname):
             print(f'File {fname} already exists. Reading it')
         else:
@@ -41,28 +41,28 @@ def read_data_ml100k():
 
     data_dir = download_and_extract_data(data_url)
     names = ['user_id', 'item_id', 'rating', 'timestamp']
-    data = pd.read_csv(os.path.join(data_dir, 'u.data'), '\t', names=names,engine='python')
-    movies = pd.read_csv(os.path.join(data_dir, 'u.item'), '\t', names=['movies'],engine='python')
+    data = pd.read_csv(os.path.join(data_dir, 'u.data'), '\t', names=names, engine='python')
+    movies = pd.read_csv(os.path.join(data_dir, 'u.item'), '\t', names=['movies'], engine='python')
     num_users = data.user_id.unique().shape[0]
     num_items = data.item_id.unique().shape[0]
     return data, movies, num_users, num_items
 
-################################################################################
+
 # prepare movie rating data for inputing in the sparse matrix
 def get_movies_ratings(movies):
-    #data, movies, num_users, num_items = read_data_ml100k()
-    res=[]
-    id=[]
+    # data, movies, num_users, num_items = read_data_ml100k()
+    res = []
+    id = []
     for row in movies['movies']:
         movie_id = row.split('|')[0]
         id.append(int(movie_id))
         movie = row.split('|')[1]
         movie = movie.split('(')[0]
         res.append(movie)
-    return pd.DataFrame({"item_id":id,"name":res},columns=["item_id","name"])
+    return pd.DataFrame({"item_id": id, "name": res}, columns=["item_id", "name"])
 
-###########################################################################################   
- # run the program   
+
+# run the program
 def main():
     data, movies, num_users, num_items = read_data_ml100k()
     movies = get_movies_ratings(movies)
@@ -72,7 +72,8 @@ def main():
     data.to_pickle("./output/ratings.pkl")
     movies.to_pickle("./output/movies.pkl")
 
-if __name__ =="__main__":
+
+if __name__ == "__main__":
     main()
     '''
   data,movies,num_users, num_items = get_movies_ratings()
@@ -82,5 +83,3 @@ if __name__ =="__main__":
   data.to_pickle("./output/ratings.pkl")
   movies.to_pickle("./output/movies.pkl")
   '''
-  
-
