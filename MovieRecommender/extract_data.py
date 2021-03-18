@@ -14,19 +14,19 @@ def read_data_ml100k():
     location ./data. It then reads the zipped file, extracts its contents.
     For this particular project, we would be accessing u.data and u.item
     files from the extracted contents.
-    
+
     returns:
-    
-    data - This is a dataframe obtained from u.data file that has user_id, 
+
+    data - This is a dataframe obtained from u.data file that has user_id,
     item_id, rating and timestamp.
-    
-    movies - This is a dataframe obtained from u.item that has movies 
+
+    movies - This is a dataframe obtained from u.item that has movies
     information delimited by '|' as line item.
-    
+
     num_users  - Unique users from data dataframe
-    
+
     num_items - Unique movies from data dataframe
-    
+
     '''
     data_url = 'http://files.grouplens.org/datasets/movielens/ml-100k.zip'
 
@@ -69,11 +69,11 @@ def get_movies_ratings(movies):
     '''
     This function takes movies dataframe as argument, processes each row by
     splitting on the delimiter '|' and gets the movie id and the movie name
-    
+
     returns:
-    
+
     a dataframe consiting of movie id and movie name
-    
+
     '''
     # data, movies, num_users, num_items = read_data_ml100k()
     res = []
@@ -92,7 +92,7 @@ def get_movies_ratings(movies):
 def main():
     '''
     This function executes the steps sequentially and writes
-    data and movies into pickle files to be used later    
+    data and movies into pickle files to be used later
     '''
     data, movies, num_users, num_items = read_data_ml100k()
     movies = get_movies_ratings(movies)
