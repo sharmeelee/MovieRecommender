@@ -34,7 +34,7 @@ Streaming Data - [MovieLens | GroupLens ](https://grouplens.org/datasets/moviele
 ## Running the Program
 ### Installation Instructions
 Run the following commands in a linux terminal. 
-Note: Python 3.8 required.
+Note: Python 3.8 required
 ```
 git clone https://github.com/sharmeelee/MovieRecommender.git
 ```
