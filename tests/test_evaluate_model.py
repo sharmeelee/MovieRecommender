@@ -10,11 +10,11 @@ test_als_model, test_user_vecs, test_item_vecs = train_model(test_train_data.T)
 
 return_store_AUC, return_popularity_AUC = evaluate_model(test_train_data, test_users_altered, [csr_matrix(test_user_vecs), csr_matrix(test_item_vecs.T)], test_test_data)
 
-# Define a class in which the tests will run
+
 class TestEvaluateModel(unittest.TestCase):
     
-    #test to make sure return scores are floats
     def test_return_format(self):
+        """Check return AUC scores for correct float type"""
         self.assertEqual(type(return_store_AUC), float)
         self.assertEqual(type(return_popularity_AUC), float)
 
