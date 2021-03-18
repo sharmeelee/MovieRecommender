@@ -92,8 +92,7 @@ def get_movies_ratings(movies):
 def main():
     '''
     This function executes the steps sequentially and writes
-	data and movies into pickle files to be used later
-    
+    data and movies into pickle files to be used later    
     '''
     data, movies, num_users, num_items = read_data_ml100k()
     movies = get_movies_ratings(movies)
