@@ -41,8 +41,10 @@ def read_data_ml100k():
 
     data_dir = download_and_extract_data(data_url)
     names = ['user_id', 'item_id', 'rating', 'timestamp']
-    data = pd.read_csv(os.path.join(data_dir, 'u.data'), '\t', names=names, engine='python')
-    movies = pd.read_csv(os.path.join(data_dir, 'u.item'), '\t', names=['movies'], engine='python')
+    data = pd.read_csv(os.path.join(data_dir, 'u.data'), '\t',
+                       names=names, engine='python')
+    movies = pd.read_csv(os.path.join(data_dir, 'u.item'), '\t',
+                         names=['movies'], engine='python')
     num_users = data.user_id.unique().shape[0]
     num_items = data.item_id.unique().shape[0]
     return data, movies, num_users, num_items
@@ -59,7 +61,8 @@ def get_movies_ratings(movies):
         movie = row.split('|')[1]
         movie = movie.split('(')[0]
         res.append(movie)
-    return pd.DataFrame({"item_id": id, "name": res}, columns=["item_id", "name"])
+    return pd.DataFrame({"item_id": id, "name": res},
+                        columns=["item_id", "name"])
 
 
 # run the program
