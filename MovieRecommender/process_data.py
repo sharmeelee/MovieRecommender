@@ -60,7 +60,6 @@ def main():
     data = pd.read_pickle("./output/ratings.pkl")
     data, num_users, num_items = process_data(data)
     print(data.shape, num_users, num_items)
-    print(f'We have {data.shape[0]} ratings from {num_users} users and {num_items} items')
     sparse_item_user, sparse_user_item = create_sparse_matrix(data)
     directory = './output'
     if not os.path.exists(directory):
