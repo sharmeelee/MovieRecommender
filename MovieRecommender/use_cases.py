@@ -7,26 +7,7 @@ import pickle
 from tabulate import tabulate
 
 
-def get_movies_rated(user_id, train_data,movies):
-    '''
-    This just tells me which movies have been already rated by a 
-    specific user in the train data. 
-    
-    parameters: 
-    
-    user_id - Input the user's id number that you want to see 
-    prior ratings of at least once
-    
-    train_data - The initial ratings training set used 
-    (without weights applied)
-        
-    movies - The array of movies used in the ratings matrix
-    
-    returns:
-    
-    A list of movie IDs and movie descriptions for a particular 
-    user that were already purchased in the training set
-    '''
+def get_movies_rated(data, user_id, train_data, movies):
     data_matrix = data.loc[data.rating != 0]
     users = list(np.sort(data_matrix.user_id.unique()))  # Get unique users
     items = list(np.sort(data_matrix.item_id.unique()))  # Get unique movies
@@ -40,42 +21,15 @@ def get_movies_rated(user_id, train_data,movies):
     return movies.loc[movies['item_id'].isin(movie_codes),
                       'name'].reset_index(drop=True)
 
-def predict_ratings(predictions,item_vecs,user_id):
-    '''
-    This gives the predicted ratings for a specific user 
-    
-    parameters: 
-    
-    predictions - dot product of latent user vector and item vector
-    
-    item_vecs - latent item vector obtained from ALS model
-        
-    user_id - Input the user's id number that you want to see 
-    predicted ratings of
-    
-    returns:
-    
-    predicted ratings for the specific user
-    '''
+
+def predict_ratings(predictions, item_vecs, user_id):
     item_vecs = predictions[1]
     user_vec = predictions[0][user_id, :]
     pred = user_vec.dot(item_vecs).toarray()[0].reshape(-1)
     return pred
 
 
-def similar_items(model,movie_list,n_similar=20):
-    '''
-    This gives the similar movies 
-    
-    parameters: 
-    
-    model - model obtained from ALternating Least squares
-    
-    movies_list - movie names
-        
-    n_similar - similarity number
-
-    '''
+def similar_items(movies, model, movie_list, n_similar=20):
     # Use implicit to get similar items.
     movies.name = movies.name.str.strip()
     item_id = movies.item_id.loc[movies.name.str.lower().
@@ -92,20 +46,6 @@ def similar_items(model,movie_list,n_similar=20):
 
 def recommendations(data, train_data, movies, model,
                     sparse_user_item, user_id):
-    '''
-    This gives the recommeded movies
-    
-    parameters: 
-    
-    model - model obtained from ALternating Least squares
-    
-    sparse user item matrix 
-        
-    user_id - Input the user's id number that you want to see 
-    recommedations of
-
-    '''
-    
     # Use the implicit recommender.
     recommended = model.recommend(user_id, sparse_user_item)
     movies_recom = []
