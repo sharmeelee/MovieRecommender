@@ -8,6 +8,13 @@ import matplotlib.pyplot as plt
 
 
 def process_data(data):
+    '''
+    This function takes data dataframe created in extract_data step
+    as the argument, drops the time timestamp column from data 
+    dataframe and creates a visualization of distribution of 
+    ratings. Saves the visualization in images folder
+    
+    '''
     data.drop('timestamp', inplace=True, axis=1, errors='ignore')
     # Seeing the distribution of ratings given by the users
     p = data.groupby('rating')['rating'].agg(['count'])
@@ -34,6 +41,16 @@ def process_data(data):
 
 
 def create_sparse_matrix(data):
+    '''
+    This function takes data dataframe created in extract_data step
+    as the argument, drops rows that have 0 ratings. It then
+    creates a sparse user-item matrix and sparse item-user matrix
+    using csr_matrix
+    
+    returns:
+    sparse item-user matrix, user-item matrix    
+    
+    ''' 
     data_matrix = data.loc[data.rating != 0]
     users = list(np.sort(data_matrix.user_id.unique()))  # Get unique users
     items = list(np.sort(data_matrix.item_id.unique()))  # Get unique movies
@@ -56,6 +73,10 @@ def create_sparse_matrix(data):
 
 
 def main():
+    '''
+    This function executes the steps sequentially and saves
+    sparse_item_user and sparse_user_item matrices
+    '''
     extract_data.main()
     data = pd.read_pickle("./output/ratings.pkl")
     data, num_users, num_items = process_data(data)
