@@ -7,6 +7,27 @@ import requests
 
 # download the data from remote url
 def read_data_ml100k():
+    '''
+    This function will download data from the given data_url, splits the path
+    using '/' delimiter and reads the filename. It creates a directory
+    'data' if not already exising and saves the downloaded zipfile in that
+    location ./data. It then reads the zipped file, extracts its contents.
+    For this particular project, we would be accessing u.data and u.item
+    files from the extracted contents.
+    
+    returns:
+    
+    data - This is a dataframe obtained from u.data file that has user_id, 
+    item_id, rating and timestamp.
+    
+    movies - This is a dataframe obtained from u.item that has movies 
+    information delimited by '|' as line item.
+    
+    num_users  - Unique users from data dataframe
+    
+    num_items - Unique movies from data dataframe
+    
+    '''
     data_url = 'http://files.grouplens.org/datasets/movielens/ml-100k.zip'
 
     def download_and_extract_data(url):
@@ -26,14 +47,7 @@ def read_data_ml100k():
 
         base_dir = os.path.dirname(fname)
         data_dir, ext = os.path.splitext(fname)
-        '''
-        if ext == '.zip':
-            fp = zipfile.ZipFile(fname, 'r')
-        elif ext in ('.tar', '.gz'):
-            fp = tarfile.open(fname, 'r')
-        else:
-            assert False, 'Only zip/tar files can be extracted.'
-        '''
+
         fp = zipfile.ZipFile(fname, 'r')
         fp.extractall(base_dir)
         print('Done!')
@@ -52,6 +66,15 @@ def read_data_ml100k():
 
 # prepare movie rating data for inputing in the sparse matrix
 def get_movies_ratings(movies):
+    '''
+    This function takes movies dataframe as argument, processes each row by
+    splitting on the delimiter '|' and gets the movie id and the movie name
+    
+    returns:
+    
+    a dataframe consiting of movie id and movie name
+    
+    '''
     # data, movies, num_users, num_items = read_data_ml100k()
     res = []
     id = []
@@ -67,6 +90,11 @@ def get_movies_ratings(movies):
 
 # run the program
 def main():
+    '''
+    This function executes the steps sequentially and writes
+	data and movies into pickle files to be used later
+    
+    '''
     data, movies, num_users, num_items = read_data_ml100k()
     movies = get_movies_ratings(movies)
     directory = './output'
@@ -78,11 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    '''
-  data,movies,num_users, num_items = get_movies_ratings()
-  directory = './output'
-  if not os.path.exists(directory):
-    os.makedirs(directory)
-  data.to_pickle("./output/ratings.pkl")
-  movies.to_pickle("./output/movies.pkl")
-  '''
